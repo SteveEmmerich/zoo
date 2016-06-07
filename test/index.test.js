@@ -23,6 +23,7 @@ test('sets environment variables from file and cli', (t) => {
 })
 
 test.todo('skips existing variables')
+test.todo('existing variables forced')
 test.todo('load from custom file')
 test.todo('nonexistant custom file')
 

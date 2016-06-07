@@ -5,7 +5,7 @@ import spawn from 'cross-spawn'
 import parse from './parse'
 
 module.exports = () => {
-  let argv = minimist(process.argv.slice(2))
+  const argv = minimist(process.argv.slice(2))
 
   /* require a subcommand to inject variables into */
   if (process.argv.length <= 2) {
@@ -34,10 +34,15 @@ module.exports = () => {
     }
   }).filter(Boolean)
 
+  /* set environment vars, overwriting if forced */
+  const env = process.env = argv.force
+    ? { ...process.env, ...customEnv }
+    : { ...customEnv, ...process.env }
+
   /* spawn subprocess with new environment variables */
   return spawn(argv._[0], argv._.slice(1, argv._.length), {
     stdio: 'inherit',
-    env: process.env = { ...customEnv, ...process.env },
+    env,
   }).on('exit', process.exit)
 }
 

@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/jsonmaur/zoo.svg?branch=master)](https://travis-ci.org/jsonmaur/zoo)
 [![Coverage Status](https://coveralls.io/repos/github/jsonmaur/zoo/badge.svg?branch=master)](https://coveralls.io/github/jsonmaur/zoo?branch=master)
 
-Zoo is the easiest way to set cross-platform environment variables for your app. It is a combination of two great libraries, [cross-env](https://github.com/kentcdodds/cross-env) and [dotenv](https://github.com/motdotla/dotenv), and lets you load variables from a `.env` file or passed as arguments. It is built in and runs on Node, but `zoo` can be used to set environment variables in any subcommand (such as BASH).
+Zoo is the easiest way to set cross-platform environment variables for your app. It is a combination of two great libraries, [cross-env](https://github.com/kentcdodds/cross-env) and [dotenv](https://github.com/motdotla/dotenv), and lets you load variables from a `.env` file or passed as arguments. It is built in and runs on Node, but it can be used to set environment variables in any subprogram (such as BASH).
 
 When `zoo` is run, your environment variables are injected directly into a spawned process, and your variables are guaranteed to be there when you need them. Works on both unix and windows machines.
 
@@ -20,13 +20,13 @@ Zoo lets you set up all your variables for dev/testing in a simple and consisten
 ```bash
 # use globally
 npm install zoo -g
-# or keep it project specific
+# or keep it local
 npm install zoo --save-dev
 ```
 
-To get started, simply run `zoo` followed by your command. For example, running `zoo node index.js` will take the environment variables from `.env` and inject them into the Node process, giving you access to them with `process.env.[VAR_NAME]`.
+To get started, simply run `zoo` followed by your command. For example, running `zoo node index.js` will take the environment variables from `.env` and inject them into the Node process, giving you access to them with `process.env`.
 
-Any variables you specify will be appended to the existing environment variables. If you specify a variable that already exists, it will be skipped.
+Any variables you specify will be appended to the existing environment variables. If you specify a variable that already exists, it will be skipped. This can be overridden with the `--force` argument (e.g. `zoo PWD=/ --force node index.js`).
 
 ## Usage
 

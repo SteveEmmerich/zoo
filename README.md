@@ -36,13 +36,13 @@ NAME=Tyrion Lannister
 STRONGHOLD=Casterly Rock
 ```
 
-If you specify variables command-style, simply put them after the `zoo` command with a space between multiple variables.
+If you specify variables command-style, simply put them after the `zoo` command with a space between multiple variables. Variables with spaces or special characters should be enclosed in quotes.
 
 ```
-zoo NODE_ENV=production NAME=Tyrion Lannister node index.js
+zoo NODE_ENV=production NAME="Tyrion Lannister" node index.js
 ```
 
-If you use `require('zoo')` in your app instead of using the CLI, it will register the environment variables as early as possible, but this method is not recommended.
+If you use `require('zoo')` in your app instead of using the CLI, it will register the environment variables as early as possible. This method works but is *not* recommended.
 
 ## Existing Variables
 

@@ -11,9 +11,7 @@ When `zoo` is run, your environment variables are injected directly into a spawn
 
 ## Why?
 
-Setting environment variables in your production environment is easy if you're using [Heroku](https://www.heroku.com) (or similar), but it can be a pain to deal with environment variables on your local machine. This lets you set up all needed variables for dev/testing in a simple and consistent way throughout your team.
-
-It can also be great if you are using something like [transform-inline-environment-variables](https://babeljs.io/docs/plugins/transform-inline-environment-variables)  to inline values for AWS Lambda functions or similar.
+Setting environment variables in your production app is easy if you're using [Heroku](https://www.heroku.com) (or similar), but it can be a pain to deal with on your local machine. This lets you set up all needed variables for dev/testing in a simple and consistent way throughout your team. It can also be great if you are using something like [transform-inline-environment-variables](https://babeljs.io/docs/plugins/transform-inline-environment-variables)  to inline values for AWS Lambda functions or similar.
 
 ## Getting Started
 
@@ -24,13 +22,13 @@ npm install zoo -g
 npm install zoo --save-dev
 ```
 
-To get started, simply run `zoo` followed by your command. For example, running `zoo node index.js` will take the environment variables from `.env` and inject them into the Node process, giving you access to them with `process.env.*`.
+To get started, simply run `zoo` followed by your command. For example, running `zoo node index.js` will take the environment variables from `.env` and inject them into the Node process, giving you access to them with `process.env.*` (in Node).
 
-Any variables you specify will be appended to existing environment variables. If you specify a variable that already exists, it will be replaced.
+Any variables you specify will be appended to the existing environment variables. If you specify a variable that already exists, it will be replaced.
 
 ## Usage
 
-Your `.env` file should be in the form of `NAME=VALUE` with one variable per line, and should be in the root directory of your project. It should also be ignored from your source control.
+Your `.env` file should be in the form of `NAME=VALUE` with one variable per line, and should be in the root directory of your project. It should be ignored from your source control.
 
 ###### .env
 ```

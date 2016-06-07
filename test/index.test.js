@@ -9,7 +9,7 @@ const zoo = proxyquire('../src', {
   'cross-spawn': spy,
 })
 
-test('sets environment variables', (t) => {
+test('sets environment variables from file and cli', (t) => {
   process.argv = ['node', 'zoo', 'NODE_ENV=westeros', 'hello', 'world']
   zoo()
   t.is(process.env.NAME, 'Tyrion Lannister')

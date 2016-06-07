@@ -5,7 +5,7 @@ import spawn from 'cross-spawn'
 import parse from './parse'
 
 module.exports = () => {
-  const argv = minimist(process.argv.slice(2))
+  const argv = minimist(process.argv.slice(2), { boolean: ['force'] })
 
   /* require a subcommand to inject variables into */
   if (process.argv.length <= 2) {

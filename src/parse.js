@@ -1,9 +1,14 @@
-export default function (src) {
+/**
+ * Parses the contents of a .env file in NAME=VALUE format.
+ * @param {buffer} src - The contents of the file as a Buffer
+ * @return {object} The parsed variables
+ */
+export default function (src = '') {
   const obj = {}
 
   /* convert Buffers before splitting into lines and processing */
   src.toString().split('\n').forEach((line) => {
-    /* matching "KEY' and 'VAL' in 'KEY=VAL' */
+    /* matching 'KEY' and 'VAL' in 'KEY=VAL' */
     const arr = line.match(/^\s*([\w\.\-]+)\s*=\s*(.*)?\s*$/)
     if (!arr) return
 

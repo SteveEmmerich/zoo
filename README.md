@@ -11,7 +11,9 @@ When `zoo` is run, your environment variables are injected directly into a spawn
 
 ## Why?
 
-Setting environment variables in your production app is easy if you're using [Heroku](https://www.heroku.com) (or similar), but it can be a pain to deal with on your local machine. This lets you set up all needed variables for dev/testing in a simple and consistent way throughout your team. It can also be great if you are using something like [transform-inline-environment-variables](https://babeljs.io/docs/plugins/transform-inline-environment-variables)  to inline values for AWS Lambda functions or similar.
+As part of the [Twelve-Factor App](http://12factor.net/config) methodology, you should be using environment variables. Setting them in your production app is easy if you're using [Heroku](https://www.heroku.com) or similar services, but it can be a pain to deal with on your local machine.
+
+Zoo lets you set up all your variables for dev/testing in a simple and consistent way throughout your team. It can also be great if you are using something like [transform-inline-environment-variables](https://babeljs.io/docs/plugins/transform-inline-environment-variables)  to inline values for AWS Lambda functions or similar.
 
 ## Getting Started
 
@@ -22,9 +24,9 @@ npm install zoo -g
 npm install zoo --save-dev
 ```
 
-To get started, simply run `zoo` followed by your command. For example, running `zoo node index.js` will take the environment variables from `.env` and inject them into the Node process, giving you access to them with `process.env.*` (in Node).
+To get started, simply run `zoo` followed by your command. For example, running `zoo node index.js` will take the environment variables from `.env` and inject them into the Node process, giving you access to them with `process.env.[VAR_NAME]`.
 
-Any variables you specify will be appended to the existing environment variables. If you specify a variable that already exists, it will be replaced.
+Any variables you specify will be appended to the existing environment variables. If you specify a variable that already exists, it will be skipped.
 
 ## Usage
 
@@ -43,6 +45,21 @@ zoo NODE_ENV=production NAME=Tyrion Lannister node index.js
 ```
 
 If you use `require('zoo')` in your app instead of using the CLI, it will register the environment variables as early as possible, but this method is not recommended.
+
+## Custom Environment File
+
+If you want to specify a custom location for your environment file, you can do so with the `--env` flag. Note that an error will be thrown and the process will exit if the custom file is not found.
+
+`zoo --env ../.environment-vars node index.js`
+
+## API
+
+### .parse(vars)
+
+  - **vars** - Variables in the format specified above that you want to parse into an object manually.
+
+    > Type: `string/buffer`  
+    > Default: `''`
 
 <a name="license"></a>
 ## License

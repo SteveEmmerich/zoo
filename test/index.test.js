@@ -22,6 +22,10 @@ test('sets environment variables from file and cli', (t) => {
   }))
 })
 
+test.todo('skips existing variables')
+test.todo('load from custom file')
+test.todo('nonexistant custom file')
+
 // *** TESTS FROM OTHER LIBRARIES TO IMPLEMENT ***
 
 //   it(`should set environment variables and run the remaining command`, () => {

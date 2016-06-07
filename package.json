@@ -56,7 +56,8 @@
     "sinon": "1.17.4"
   },
   "dependencies": {
-    "cross-spawn": "4.0.0"
+    "cross-spawn": "4.0.0",
+    "minimist": "1.2.0"
   },
   "babel": {
     "presets": [

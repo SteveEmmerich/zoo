@@ -1,7 +1,7 @@
 {
   "name": "zoo",
   "version": "0.1.0",
-  "description": "The best way to set environment variables.",
+  "description": "Cross-platform environment variables",
   "author": "Jason Maurer",
   "license": "MIT",
   "repository": {

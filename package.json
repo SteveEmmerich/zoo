@@ -1,0 +1,74 @@
+{
+  "name": "zoo",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Jason Maurer",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsonmaur/zoo.git"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "keywords": [
+    ".env",
+    "env",
+    "environment",
+    "variables",
+    "config",
+    "settings",
+    "cross",
+    "platform",
+    "dotenv"
+  ],
+  "files": [
+    "bin/",
+    "lib/",
+    "LICENSE",
+    "README.md"
+  ],
+  "main": "lib/index.js",
+  "bin": {
+    "zoo": "bin/zoo"
+  },
+  "scripts": {
+    "test:lint": "exlint src test",
+    "test:unit": "rm -rf .nyc_output coverage && nyc ava -a",
+    "test": "npm-run-all -p test:*",
+    "posttest": "nyc report -r=lcov",
+    "coveralls": "cat coverage/lcov.info | coveralls",
+    "build": "rm -rf lib && babel src -d lib --no-comments",
+    "watch": "npm run build -- -w",
+    "prepublish": "npm test && npm run build"
+  },
+  "devDependencies": {
+    "ava": "0.15.2",
+    "babel-cli": "6.9.0",
+    "babel-preset-es2015": "6.9.0",
+    "babel-register": "6.9.0",
+    "coveralls": "2.11.9",
+    "exlint": "0.1.5",
+    "npm-run-all": "2.1.1",
+    "nyc": "6.4.4"
+  },
+  "dependencies": {},
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
+  },
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "include": [
+      "src"
+    ]
+  }
+}

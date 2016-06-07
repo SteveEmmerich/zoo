@@ -5,9 +5,15 @@
 
 Zoo is the easiest way to set cross-platform environment variables for your app. It is a combination of two great libraries, [cross-env](https://github.com/kentcdodds/cross-env) and [dotenv](https://github.com/motdotla/dotenv), and lets you load variables from a `.env` file or passed as arguments. It is built in and runs on Node, but `zoo` can be used to set environment variables in any subcommand (such as BASH).
 
-When `zoo` is run, your environment variables are injected directly into a spawned process and your variables are guaranteed to be there when you need them. Works on both unix and windows machines.
+When `zoo` is run, your environment variables are injected directly into a spawned process, and your variables are guaranteed to be there when you need them. Works on both unix and windows machines.
 
 > Warning: It's never a good idea to commit your `.env` files to source control!
+
+## Why?
+
+Setting environment variables in your production environment is easy if you're using [Heroku](https://www.heroku.com) (or similar), but it can be a pain to deal with environment variables on your local machine. This lets you set up all needed variables for dev/testing in a simple and consistent way throughout your team.
+
+It can also be great if you are using something like [transform-inline-environment-variables](https://babeljs.io/docs/plugins/transform-inline-environment-variables)  to inline values for AWS Lambda functions or similar.
 
 ## Getting Started
 

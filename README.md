@@ -26,8 +26,6 @@ npm install zoo --save-dev
 
 To get started, simply run `zoo` followed by your command. For example, running `zoo node index.js` will take the environment variables from `.env` and inject them into the Node process, giving you access to them with `process.env`.
 
-Any variables you specify will be appended to the existing environment variables. If you specify a variable that already exists, it will be skipped. This can be overridden with the `--force` flag (e.g. `zoo PWD=/ --force node index.js`).
-
 ## Usage
 
 Your `.env` file should be in the form of `NAME=VALUE` with one variable per line, and should be in the root directory of your project. It should be ignored from your source control.
@@ -46,17 +44,25 @@ zoo NODE_ENV=production NAME=Tyrion Lannister node index.js
 
 If you use `require('zoo')` in your app instead of using the CLI, it will register the environment variables as early as possible, but this method is not recommended.
 
+## Existing Variables
+
+All existing environment variables will be preserved. If you specify a variable that already exists in the environment, it will be skipped. This can be overridden with the `--force` flag as seen below.
+
+```
+zoo PWD=/ --force node index.js
+```
+
 ## Custom Environment File
 
 If you want to specify a custom location for your environment file, you can do so with the `--env` flag. Note that an error will be thrown and the process will exit if the custom file is not found.
 
 `zoo --env ../.environment-vars node index.js`
 
-## API
+## Javascript API
 
-### .parse(vars)
+#### .parse(vars)
 
-  - **vars** - Variables in the format specified above that you want to parse into an object manually.
+  - **vars** - Variables in the `NAME=VALUE` format that you want to parse into a javascript object.
 
     > Type: `string/buffer`  
     > Default: `''`

@@ -26,7 +26,7 @@ npm install zoo --save-dev
 
 To get started, simply run `zoo` followed by your command. For example, running `zoo node index.js` will take the environment variables from `.env` and inject them into the Node process, giving you access to them with `process.env`.
 
-Any variables you specify will be appended to the existing environment variables. If you specify a variable that already exists, it will be skipped. This can be overridden with the `--force` argument (e.g. `zoo PWD=/ --force node index.js`).
+Any variables you specify will be appended to the existing environment variables. If you specify a variable that already exists, it will be skipped. This can be overridden with the `--force` flag (e.g. `zoo PWD=/ --force node index.js`).
 
 ## Usage
 

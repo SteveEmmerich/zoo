@@ -10,13 +10,13 @@ const zoo = proxyquire('../src', {
 })
 
 test('sets environment variables from file and cli', (t) => {
-  process.argv = ['node', 'zoo', 'NODE_ENV=westeros', 'hello', 'world']
+  process.argv = ['node', 'zoo', 'NODE_ENV=westeros', 'hello', 'world', '-a', '--test', 'hi']
   zoo()
   t.is(process.env.NAME, 'Tyrion Lannister')
   t.is(process.env.STRONGHOLD, 'Casterly Rock')
   t.is(process.env.NODE_ENV, 'westeros')
   t.true(spy.calledOnce)
-  t.true(spy.calledWith('hello', ['world'], {
+  t.true(spy.calledWith('hello', ['world', '-a', '--test', 'hi'], {
     stdio: 'inherit',
     env: { ...process.env },
   }))

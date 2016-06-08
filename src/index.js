@@ -5,7 +5,7 @@ import spawn from 'cross-spawn'
 import parse from './parse'
 
 module.exports = () => {
-  const argv = minimist(process.argv.slice(2), { boolean: ['force'] })
+  const config = minimist(process.argv.slice(2), { boolean: ['force'] })
 
   /* require a subcommand to inject variables into */
   if (process.argv.length <= 2) {
@@ -13,10 +13,10 @@ module.exports = () => {
   }
 
   /* path to environment file */
-  const envFile = path.resolve(process.cwd(), argv.env || '.env')
+  const envFile = path.resolve(process.cwd(), config.env || '.env')
 
   /* require file if it is specified */
-  if (argv.env && !fs.existsSync(envFile)) {
+  if (config.env && !fs.existsSync(envFile)) {
     throw new Error(`"${envFile}" was not found!`)
   }
 
@@ -25,7 +25,7 @@ module.exports = () => {
     ? parse(fs.readFileSync(envFile)) : {}
 
   /* load variables from command, and remove them from argv */
-  argv._ = argv._.map((arg) => {
+  const argv = process.argv.map((arg) => {
     const match = arg.match(/(\w+)=('(.+)'|"(.+)"|(.+))/)
     if (match) {
       customEnv[match[1]] = match[3] || match[4] || match[5]
@@ -35,12 +35,12 @@ module.exports = () => {
   }).filter(Boolean)
 
   /* set environment vars, overwriting if forced */
-  const env = process.env = argv.force
+  const env = process.env = config.force
     ? { ...process.env, ...customEnv }
     : { ...customEnv, ...process.env }
 
   /* spawn subprocess with new environment variables */
-  return spawn(argv._[0], argv._.slice(1, argv._.length), {
+  return spawn(argv[2], argv.slice(3, argv.length), {
     stdio: 'inherit',
     env,
   }).on('exit', process.exit)

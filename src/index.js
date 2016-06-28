@@ -13,10 +13,10 @@ module.exports = () => {
   }
 
   /* path to environment file */
-  const envFile = path.resolve(process.cwd(), config.env || '.env')
+  const envFile = path.resolve(process.cwd(), config.zoofile || '.env')
 
   /* require file if it is specified */
-  if (config.env && !fs.existsSync(envFile)) {
+  if (config.zoofile && !fs.existsSync(envFile)) {
     throw new Error(`"${envFile}" was not found!`)
   }
 

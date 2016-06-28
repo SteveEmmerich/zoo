@@ -54,9 +54,9 @@ zoo PWD=/ --force node index.js
 
 ## Custom Environment File
 
-If you want to specify a custom location for your environment file, you can do so with the `--env` flag. Note that an error will be thrown and the process will exit if the custom file is not found.
+If you want to specify a custom location for your environment file, you can do so with the `--zoofile` flag. Note that an error will be thrown and the process will exit if the custom file is not found.
 
-`zoo --env ../.environment-vars node index.js`
+`zoo --zoofile ../.environment-vars node index.js`
 
 ## Javascript API
 

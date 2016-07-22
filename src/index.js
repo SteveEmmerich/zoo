@@ -42,7 +42,7 @@ module.exports = () => {
   /* remove --zoofile arg (this feels hacky...) */
   const zooFileArg = argv.indexOf('--zoofile')
   if (zooFileArg > -1) argv.splice(zooFileArg, 2)
-console.log(argv[2], argv.slice(3, argv.length))
+
   /* spawn subprocess with new environment variables */
   return spawn(argv[2], argv.slice(3, argv.length), {
     stdio: 'inherit',

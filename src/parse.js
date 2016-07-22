@@ -18,7 +18,7 @@ export default function (src = '') {
     /* expand newlines in quoted values */
     const len = value ? value.length : 0
 
-    if (len > 0 && value.charAt(0) === '\"' && value.charAt(len - 1) === '\"') {
+    if (len > 0 && value.charAt(0) === '"' && value.charAt(len - 1) === '"') {
       value = value.replace(/\\n/gm, '\n')
     }
 

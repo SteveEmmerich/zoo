@@ -6,7 +6,7 @@ const spawned = { on: sinon.spy() }
 const spy = sinon.spy(() => spawned)
 
 const zoo = proxyquire('../src', {
-  'cross-spawn': spy,
+  'cross-spawn': spy
 })
 
 test('sets environment variables from file and cli', (t) => {
@@ -18,7 +18,7 @@ test('sets environment variables from file and cli', (t) => {
   t.true(spy.calledOnce)
   t.true(spy.calledWith('hello', ['world', '-a', '--test', 'hi'], {
     stdio: 'inherit',
-    env: { ...process.env },
+    env: { ...process.env }
   }))
 })
 
@@ -26,6 +26,10 @@ test.todo('skips existing variables')
 test.todo('existing variables forced')
 test.todo('load from custom file')
 test.todo('nonexistant custom file')
+
+/* REGRESSION TESTS */
+
+test.todo('putting args in front of subcommand (e.g. zoo --zoofile ... node index.js)')
 
 // *** TESTS FROM OTHER LIBRARIES TO IMPLEMENT ***
 

@@ -25,7 +25,7 @@ module.exports = () => {
     ? parse(fs.readFileSync(envFile)) : {}
 
   /* load variables from command, and remove them from argv */
-  const argv = process.argv.map((arg) => {
+  let argv = process.argv.map((arg) => {
     const match = arg.match(/(\w+)=('(.+)'|"(.+)"|(.+))/)
     if (match) {
       customEnv[match[1]] = match[3] || match[4] || match[5]
@@ -39,10 +39,14 @@ module.exports = () => {
     ? { ...process.env, ...customEnv }
     : { ...customEnv, ...process.env }
 
+  /* remove --zoofile arg (this feels hacky...) */
+  const zooFileArg = argv.indexOf('--zoofile')
+  if (zooFileArg) argv.splice(zooFileArg, 2)
+
   /* spawn subprocess with new environment variables */
   return spawn(argv[2], argv.slice(3, argv.length), {
     stdio: 'inherit',
-    env,
+    env
   }).on('exit', process.exit)
 }
 

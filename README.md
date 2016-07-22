@@ -61,9 +61,19 @@ If you want to specify a custom location for your environment file, you can do s
 
 ## Javascript API
 
-#### .parse(vars)
+#### .get (file)
 
-  - **vars** - Variables in the `NAME=VALUE` format that you want to parse into a javascript object.
+  Get the variables from a file without modifying the environment.
+
+  - **file** - The filename of your environment variables file.
+
+    > Type: `string`  
+
+#### .parse (vars)
+
+  Parses variables in the `NAME=VALUE` format.
+
+  - **vars** - Variables in above format that you want to parse into a javascript object.
 
     > Type: `string/buffer`  
     > Default: `''`

@@ -50,4 +50,10 @@ module.exports = () => {
   }).on('exit', process.exit)
 }
 
+function get (file) {
+  const data = fs.readFileSync(file)
+  return parse(data)
+}
+
+module.exports.get = get
 module.exports.parse = parse

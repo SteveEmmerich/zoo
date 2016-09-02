@@ -78,6 +78,14 @@ If you want to specify a custom location for your environment file, you can do s
     > Type: `string/buffer`  
     > Default: `''`
 
+#### .stringify (obj)
+
+  Converts a javascript object into `KEY=VALUE` format. Deep objects and arrays are converted into stringified paths. e.g. `{ deep: { object: 'value' } }` gets converted to `deep.object=value`, and `{ arr: ['hi', 'hey'] }`gets converted to `arr.0=hi` and `arr.1=hey`.
+
+  - **obj** - The javascript object you want to convert.
+
+    > Type: `object`  
+
 <a name="license"></a>
 ## License
 

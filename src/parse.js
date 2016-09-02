@@ -1,3 +1,5 @@
+import objectPath from 'object-path'
+
 /**
  * Parses the contents of a .env file in NAME=VALUE format.
  * @param {buffer} src - The contents of the file as a Buffer
@@ -25,7 +27,7 @@ export default function (src = '') {
     /* remove any surrounding quotes and extra spaces */
     value = value.replace(/(^['"]|['"]$)/g, '').trim()
 
-    obj[arr[1]] = value
+    objectPath.set(obj, arr[1], value)
   })
 
   return obj

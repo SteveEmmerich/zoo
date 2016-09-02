@@ -3,6 +3,7 @@ import path from 'path'
 import minimist from 'minimist'
 import spawn from 'cross-spawn'
 import parse from './parse'
+import stringify from './stringify'
 
 module.exports = () => {
   const config = minimist(process.argv.slice(2), { boolean: ['force'] })
@@ -57,3 +58,4 @@ function get (file) {
 
 module.exports.get = get
 module.exports.parse = parse
+module.exports.stringify = stringify

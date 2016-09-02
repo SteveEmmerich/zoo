@@ -9,7 +9,7 @@ export default function (src = '') {
   const obj = {}
 
   /* convert Buffers before splitting into lines and processing */
-  src.toString().split('\n').forEach((line) => {
+  src.toString().trim().split('\n').forEach((line) => {
     /* matching 'KEY' and 'VAL' in 'KEY=VAL' */
     const arr = line.match(/^\s*([\w\.\-]+)\s*=\s*(.*)?\s*$/)
     if (!arr) return

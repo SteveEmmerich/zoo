@@ -35,7 +35,7 @@
   },
   "scripts": {
     "test:lint": "standard --verbose | snazzy",
-    "test:unit": "rm -rf .nyc_output coverage && nyc ava -a",
+    "test:unit": "rm -rf .nyc_output coverage && nyc ava src/**/*.test.js -a",
     "test:coverage": "nyc report -r=lcov",
     "test": "npm-run-all test:*",
     "coveralls": "cat coverage/lcov.info | coveralls",
@@ -50,6 +50,7 @@
     "babel-preset-stage-2": "6.13.0",
     "babel-register": "6.14.0",
     "coveralls": "2.11.12",
+    "mock-fs": "3.11.0",
     "npm-run-all": "3.1.0",
     "nyc": "8.1.0",
     "proxyquire": "1.7.10",

@@ -1,9 +1,18 @@
 import test from 'ava'
+import mock from 'mock-fs'
 import sinon from 'sinon'
 import proxyquire from 'proxyquire'
 
 const spawned = { on: sinon.spy() }
 const spy = sinon.spy(() => spawned)
+
+test.beforeEach(() => mock({
+  '.env': `
+NAME=Tyrion Lannister
+STRONGHOLD=Casterly Rock
+  `
+}))
+test.afterEach(() => mock.restore())
 
 const zoo = proxyquire('../src', {
   'cross-spawn': spy

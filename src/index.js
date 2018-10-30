@@ -27,7 +27,7 @@ module.exports = () => {
 
   /* load variables from command, and remove them from argv */
   let argv = process.argv.map((arg) => {
-    const match = arg.match(/(\w+)=('(.+)'|"(.+)"|(.+))/)
+    const match = arg.match(/^(?!-)(\w+)=('(.+)'|"(.+)"|(.+))/)
     if (match) {
       customEnv[match[1]] = match[3] || match[4] || match[5]
     } else {
